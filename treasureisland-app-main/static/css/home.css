@@ -1,0 +1,276 @@
+/* this is the main css file */
+/*
+this is the css for the notification bell
+*/
+	
+.w3-wrapper{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    padding: 11px 7px 15px 7px;
+    display: block;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    height: 0px;
+    width:38px;
+    
+   
+
+}
+.notify-icon{
+  width: 25px;
+    height: 25px;
+    display: block;
+    position: relative;
+    background-position: center center;
+  animation:ring 1.6s linear infinite; /*this makes the bell shake*/
+}
+.w3-count{
+   position: absolute;
+    padding: 2px 3px;
+    background: #FF4F38;
+    color: #fff;
+    border-radius: 30px;
+    top: 7px;
+    right: 0px;
+    min-width: 12px;
+    font-size: 11px;
+    z-index: 200;
+    text-align: center;
+    animation: w3-alert-red 1.6s infinite;/*this triggers the red circle around the number*/
+}
+@keyframes w3-alert-red {
+	0% {
+		-webkit-box-shadow: 0 0 0 0 rgba(254, 57, 5, 0.7);
+		-moz-box-shadow: 0 0 0 0 rgba(254, 57, 5, 0.7);
+		box-shadow: 0 0 0 0 rgba(254, 57, 5, 0.7)
+	}
+	100% {
+		-webkit-box-shadow: 0 0 0 15px rgba(254, 57, 5, 0);
+		-moz-box-shadow: 0 0 0 15px rgba(254, 57, 5, 0);
+		box-shadow: 0 0 0 15px rgba(254, 57, 5, 0)
+	}
+}
+
+@keyframes ring
+  {
+    0% { transform: rotate(0deg) }
+    5% { transform: rotate(0deg) }
+    15% { transform: rotate(0deg) }
+    25% { transform: rotate(20deg) }
+    35% { transform: rotate(-15deg) }
+    45% { transform: rotate(10deg) }
+    55% { transform: rotate(-5deg) }
+    60% { transform: rotate(0deg) }
+    100% { transform: rotate(0deg) }
+  }
+
+.header_and_logo{grid-area: header;}
+.temperature_class{grid-area: temperature; }
+.humidity_class{grid-area: humidity; }
+.sensor_class{grid-area: sensor_data; }
+.footer_class{grid-area: footer; }
+
+.grid_container{
+    display: grid;
+    grid-template-areas: 
+        'header header header header header header'
+        'temperature temperature temperature humidity humidity humidity'
+        'sensor_data sensor_data sensor_data sensor_data sensor_data sensor_data'
+        'footer footer footer footer footer footer';
+    gap: 10px;
+    background-color: rgba(0, 68, 255, 0.064);
+    padding: 10px;
+    /* margin: auto; */
+}
+.grid_container > div{
+    /* background-color: rgba(0, 68, 255, 0.422); */
+    /* text-align: center; */
+    padding: 20px 0;
+}
+
+section{
+    color: whitesmoke;
+    
+}
+.table-view{
+    margin: 0 100px;
+
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #DDD;
+    background-image: url('https://images.pexels.com/photos/2531709/pexels-photo-2531709.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    /* background-image: url('/static/images/capgemini_logo.jpg'); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+}
+#table_view_style{
+    height: 300px;
+    font-size: medium;
+    overflow: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;  
+    width: 100%;
+    margin: auto;
+}
+.chart{
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+}
+#sensor_id{
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+  /* border: 1px solid red; */
+}
+.header_and_logo{
+    background-color: rgba(0, 68, 255, 0.422);  
+    color: black; 
+    height: fit-content; 
+    line-height: 15px;
+}
+#header{
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+}
+.hide{
+    display: none;
+    border-style: dashed;
+    width: 100px;
+}
+.w3-count:hover + .hide {
+    display: block;
+    color: red;
+    cursor: pointer;
+  }
+
+.temperature_class{
+    font-size: 24px;
+    background-color: rgba(0, 68, 255, 0.422);
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgba(0, 68, 255, 0.422);
+    text-align: center;
+}
+#summary{
+    /* font-weight: 700; */
+    color:black;
+}
+
+.humidity_class{
+    font-size: 24px;
+    background-color: rgba(0, 68, 255, 0.422);
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgba(0, 68, 255, 0.422);
+    text-align: center;
+}
+.sensor_class{
+    font-size: 24px;
+    background-color: rgba(0, 68, 255, 0.422);
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgba(0, 68, 255, 0.422);
+    text-align: center;
+    /* margin: auto; */
+    /* max-width: 900px;
+    width: 100%;
+    margin: auto; */
+}
+footer a, footer a:link, footer a:visited, footer a:hover, footer a:active, footer a:focus {
+    color: white;
+}
+
+footer a:hover {
+    color:blue;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    
+}
+
+footer p.legal {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+footer{
+    background-color: black;
+    padding: 30px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.dropbtn {
+    /* background-color: yellow; */
+    color: black;
+    padding: 10px;
+    font-size: 12px;
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 200px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: grey;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: grey;
+}
+
+/* small screen view*/
+@media only screen and (max-width: 700px){
+    .grid_container{
+        display: block;        
+        background-color: rgba(0, 68, 255, 0.064);
+        padding: 5px;
+        
+    }
+    .header_and_logo{
+        line-height: 30px;
+    }
+    .temperature_class{
+        width: auto;
+        margin-top: 10px;
+        height: auto;
+        font-size: medium;
+    }
+
+    .humidity_class{
+        width: auto;
+        margin-top: 10px;
+        height: auto;
+        font-size: medium;
+    }
+
+    .sensor_class{
+        margin-top: 10px;
+        
+    }
+}

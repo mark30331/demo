@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Treasure_Island_Sensor_Board">
+    <title>Sensor_DashBoard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/home.css')}}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body>
+    <div class="grid_container">   
+
+        <div class="header_and_logo">            
+            <h1 id="header">Treasure Island Sensor Board <br>
+                <a href="#"  class="w3-wrapper sdp-glow">
+                    <svg class="notify-icon" viewBox="6 4 30 30">           
+                       <path d="M19.1818,30.5455h3.6364a0,0,0,0,1,0,0v.9091A1.8182,1.8182,0,0,1,21,33.2727h0a1.8182,1.8182,0,0,1-1.8182-1.8182v-.9091A0,0,0,0,1,19.1818,30.5455Z"></path> 
+                       <path d="M20.9091,8.7273h.1818a.8182.8182,0,0,1,.8182.8182v2.8182a0,0,0,0,1,0,0H20.0909a0,0,0,0,1,0,0V9.5455A.8182.8182,0,0,1,20.9091,8.7273Z"></path>
+                       <path d="M21,12.5455q.2061,0,.4154.0134a6.3426,6.3426,0,0,1,5.7664,6.4486v2.9269a19.3045,19.3045,0,0,0,.8675,5.702H13.9507a19.3045,19.3045,0,0,0,.8675-5.702V18.7273A6.1887,6.1887,0,0,1,21,12.5455m0-2a8.1816,8.1816,0,0,0-8.1818,8.1818v3.2071A17.2221,17.2221,0,0,1,11,29.6364H31a17.2221,17.2221,0,0,1-1.8182-7.702V19.0075a8.368,8.368,0,0,0-7.6372-8.4444q-.274-.0177-.5446-.0176Z"></path>
+                   </svg>
+                  <span class="w3-count">{{countt}}</span>
+                  <span class="hide">The Lastest Temperature is {{recent_temp_value}}℉</span>
+                </a>
+            </h1>
+          
+
+        </div>
+        
+        <div class="temperature_class">  
+            <p id="summary"><b>Temperature In {{town_value}} <br> {{country_value}}</b></p>  
+            <img src= {{icon_value}} alt="current_weather_icon" id="">               
+            <span id=""> <br> <b>{{temp_value}}℉</b></span>
+            
+        </div>
+
+        <div class="humidity_class">   
+            <p id="summary"><b>Current Weather Summary </b></p> 
+            <span id="currently"> <b>Currently : </b>{{weather_description}}</span> <br>
+            <span id=""><b>Humidity : </b>{{humidity_value}}%</span><br>
+            <span id=""><b>Pressure : </b>{{pressure_value}} hPa</span>
+        </div>
+        
+        <div class="sensor_class">            
+            <!-- <p>Select Sensor Type</p>     -->
+            <div class="dropdown">
+                <button class="dropbtn"> Sensor Type </button>
+                <div class="dropdown-content">
+                <a href="#">Temperature</a>                
+                <a href="{{ url_for('h_graph')}}">Humidity</a>
+                <a href="{{ url_for('press_graph') }}"> Pressure </a>
+                <a href="{{ url_for('part_graph') }}"> Particulate </a>
+                </div>
+            </div>   
+            <div class="dropdown">
+                <button class="dropbtn"> view mode </button>
+                <div class="dropdown-content">                
+                <a href="{{ url_for('html_table') }}"> Table view </a>
+                </div>
+            </div>            
+            <!-- <p id="sensor_id" ></p> -->
+            <div class="chart" id="linegraph">              
+        
+            </div>
+        </div>
+
+        <div class="footer_class">
+            <footer>                
+                <p class="legal">&copy; <span id="copyrightyear"></span> | Treasure_Island | Austin, Texas| <a
+                    href="https://www.Capgemini.com" target="_blank">Capgemini</a></p>
+                <p class="highlight">Last Updated: <span id="lastupdated"></span></p>            
+            </footer>
+        </div>
+    </div>
+    <template id="recent_temp_value">
+        {{recent_temp_value}}
+    </template>
+<script>
+    var graphs = {{plot | safe}};
+    Plotly.plot('linegraph', graphs,{});
+    setInterval(() => {                                                          
+    Plotly.purge('linegraph');
+    Plotly.plot('linegraph', graphs,{});    
+    },100000);
+
+</script>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{{url_for('static', filename = 'javascript/index.js')}}"></script>
+
+</body>
+</html>
